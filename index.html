@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stash</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="title">Stash</div>
+      <div class="subtitle">Папки • Фото • Видео • Аудио</div>
+    </div>
+
+    <div class="actions">
+      <button id="btnAddFolder" class="btn">Добавить папку</button>
+      <button id="btnShare" class="btn btn-primary" disabled>Share</button>
+      <input id="folderPicker" type="file" webkitdirectory multiple hidden />
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="tabs-row">
+      <div id="tabs" class="tabs"></div>
+    </div>
+
+    <div class="toolbar">
+      <input id="searchInput" class="input" type="search" placeholder="Поиск по имени файла..." autocomplete="off" />
+      <select id="typeFilter" class="select">
+        <option value="all">Все</option>
+        <option value="image">Фото</option>
+        <option value="video">Видео</option>
+        <option value="audio">Аудио</option>
+      </select>
+      <select id="sortSelect" class="select">
+        <option value="name-asc">Имя: A → Z</option>
+        <option value="name-desc">Имя: Z → A</option>
+        <option value="type-asc">Тип: аудио → фото → видео</option>
+        <option value="type-desc">Тип: видео → фото → аудио</option>
+        <option value="size-asc">Размер: ↑</option>
+        <option value="size-desc">Размер: ↓</option>
+        <option value="date-asc">Дата: ↑</option>
+        <option value="date-desc">Дата: ↓</option>
+      </select>
+    </div>
+
+    <div id="stats" class="stats"></div>
+
+    <div id="grid" class="grid"></div>
+
+    <div id="empty" class="empty" hidden>
+      <div class="empty-title">Пока пусто</div>
+      <div class="empty-text">Нажмите «Добавить папку» и выберите папку с файлами.</div>
+    </div>
+  </main>
+
+  <div id="modal" class="modal" hidden>
+    <div class="backdrop" data-close="1"></div>
+    <div class="dialog" role="dialog" aria-modal="true">
+      <div class="dialog-head">
+        <div class="h-left">
+          <div id="modalName" class="m-name"></div>
+          <div id="modalPath" class="m-path"></div>
+        </div>
+        <div class="h-right">
+          <a id="modalDownload" class="btn" download>Скачать</a>
+          <button id="modalClose" class="btn">Закрыть</button>
+        </div>
+      </div>
+
+      <div class="dialog-body">
+        <div id="modalMedia" class="media"></div>
+
+        <div class="info">
+          <div class="info-title">Информация</div>
+          <div id="infoGrid" class="info-grid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
